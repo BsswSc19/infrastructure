@@ -1,8 +1,7 @@
 # Define customizable work environment that runs tests with ruby/rake
-# The sudo line here is now depracated by the move from containerized to
-# virtual-machine-based build environments
-# https://blog.travis-ci.com/2018-11-19-required-linux-infrastructure-migration
-sudo: required
+# At the time of this commit, the Xenial Ubuntu build environment is the 
+# default environment and has gfortran 6.
+dist: xenial
 language: ruby
 env:
   global:
@@ -13,7 +12,7 @@ env:
 addons:
   apt:
     sources: 
-    - ubuntu-toolchain-r-test
+    - sourceline: 'ppa:ubuntu-toolchain-r/test'
     packages:
     - gfortran-6
     - doxygen
